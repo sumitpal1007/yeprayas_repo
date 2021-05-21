@@ -1,0 +1,21 @@
+Installed python 3.9.5
+
+
+
+commands
+>>py -m venv project-name
+>>project-name\Scripts\activate.bat
+>>py -m pip install Django
+>>django-admin startproject project-name
+To open this created projcet in Visual Studio, run command similar to below
+>>C:\Users\sumit\Downloads\VisualCode\Code .
+
+open terminal in visual studio and run below commands
+>>python manage.py startapp emaplyeeapi
+>>pip install djangorestframework
+>>pip install pymysql
+to migrate default models to db run
+>>pyhton manage.py migrate
+to migarte newly created models run below two commands
+>>python manage.py makemigrations employeeapi
+>>pyhton manage.py migrate

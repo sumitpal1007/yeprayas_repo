@@ -1,0 +1,153 @@
+{
+	"info": {
+		"_postman_id": "99f955c4-9a34-4a74-bd66-57d94657a761",
+		"name": "EC2-APIs-Yeprayas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET : get all parties",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://65.0.124.110:8000/yprs/party/",
+					"protocol": "http",
+					"host": [
+						"65",
+						"0",
+						"124",
+						"110"
+					],
+					"port": "8000",
+					"path": [
+						"yprs",
+						"party",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET : get party by party_id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://65.0.124.110:8000/yprs/party/5",
+					"protocol": "http",
+					"host": [
+						"65",
+						"0",
+						"124",
+						"110"
+					],
+					"port": "8000",
+					"path": [
+						"yprs",
+						"party",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST : register party",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"name\" : \"Raju\",\r\n\"contact_number\" : \"78652345\",\r\n\"party_username\" : \"rohit009\",\r\n\"party_password\" : \"pass\",\r\n\"description\" : \"anything\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://65.0.124.110:8000/yprs/party/",
+					"protocol": "http",
+					"host": [
+						"65",
+						"0",
+						"124",
+						"110"
+					],
+					"port": "8000",
+					"path": [
+						"yprs",
+						"party",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT : update party",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"name\" : \"Ankit\",\r\n\"contact_number\" : \"1234567890\",\r\n\"description\" : \"updated\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://65.0.124.110:8000/yprs/party/?party_id=1",
+					"protocol": "http",
+					"host": [
+						"65",
+						"0",
+						"124",
+						"110"
+					],
+					"port": "8000",
+					"path": [
+						"yprs",
+						"party",
+						""
+					],
+					"query": [
+						{
+							"key": "party_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
