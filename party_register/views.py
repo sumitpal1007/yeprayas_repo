@@ -13,12 +13,29 @@ from rest_framework.exceptions import ParseError
 class PartyAPIView(APIView):
 
     def get(self, request):
-        parties = Party.objects.all()
-        serializer = PartySerializer(parties, many=True)
-        return Response({
-            'success': True,
-            'data': serializer.data
-        }, status=status.HTTP_200_OK)
+        try:
+            if 'party_id' in request.query_params and request.query_params["party_id"] != "":
+                party_id = request.query_params["party_id"]
+                party = Party.objects.get(party_id=party_id)
+                serializer = PartySerializer(party)
+
+                return Response({
+                    'success': True,
+                    'data': serializer.data
+                }, status=status.HTTP_200_OK)
+            else:
+                parties = Party.objects.all()
+                serializer = PartySerializer(parties, many=True)
+                return Response({
+                    'success': True,
+                    'data': serializer.data
+                }, status=status.HTTP_200_OK)
+                
+        except:
+            return Response({
+                    'success': False,
+                    'message': 'INTERNAL_SERVER_ERROR'
+                }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     @transaction.atomic
     def post(self, request, *args, **kwargs):

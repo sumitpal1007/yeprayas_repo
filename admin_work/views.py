@@ -18,12 +18,29 @@ from rest_framework.exceptions import ParseError
 class AdminAPIView(APIView):
 
     def get(self, request):
-        admins = Admin.objects.all()
-        serializer = AdminSerializer(admins, many=True)
-        return Response({
-            'success': True,
-            'data': serializer.data
-        }, status=status.HTTP_200_OK)
+        try:
+            if 'admin_id' in request.query_params and request.query_params["admin_id"] != "":
+                admin_id = request.query_params["admin_id"]
+                admin = Admin.objects.get(admin_id=admin_id)
+                serializer = AdminSerializer(admin)
+
+                return Response({
+                    'success': True,
+                    'data': serializer.data
+                }, status=status.HTTP_200_OK)
+            else:
+                admins = Admin.objects.all()
+                serializer = AdminSerializer(admins, many=True)
+                return Response({
+                    'success': True,
+                    'data': serializer.data
+                }, status=status.HTTP_200_OK)
+                
+        except:
+            return Response({
+                    'success': False,
+                    'message': 'INTERNAL_SERVER_ERROR'
+                }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     @transaction.atomic
     def post(self, request, *args, **kwargs):
