@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-0=yfl72t67$1%$to#*h66x-nid5kl@ycoowp$^^f@6^%u!%z)y
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['65.0.124.110','172.31.9.233']
 
 
 # Application definition
@@ -78,8 +78,12 @@ WSGI_APPLICATION = 'yeprayas_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'yeprayasdb',
+        'USER': 'ashusumit',
+        'PASSWORD': 'PASSW0RD',
+        'HOST' : 'localhost',
+        'PORT': '3306'
     }
 }
 
